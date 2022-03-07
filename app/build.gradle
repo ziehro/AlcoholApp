@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdk 31
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId 'com.ziehro.alcohol'
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 3
-        versionName '3'
+        targetSdkVersion 30
+        versionCode 4
+        versionName '4'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

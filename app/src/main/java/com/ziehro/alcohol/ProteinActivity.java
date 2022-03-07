@@ -2,10 +2,15 @@ package com.ziehro.alcohol;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -13,25 +18,19 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+public class ProteinActivity extends AppCompatActivity {
 
-import android.view.Menu;
-import android.view.MenuItem;
-
-public class MainActivity extends AppCompatActivity {
-
-    EditText alc, vol, quantity, price;
-    TextView TVA, alcPerBuck;
-    Button buttonSubmit, buttonGoToProtein;
-    Double tvaResult, alcPerBuckResult, alcNum, volNum, quantityNum, priceNum;
+    EditText protein, perGramOrML, fullSize, price;
+    TextView TVA, ProteinPerBuck;
+    Button buttonSubmit, buttonGoToMain;
+    Double tvpResult, ProteinPerBuckResult, proteinNum, perGrams, fullSizeNum, priceNum;
     AdView mAdView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_protein);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -47,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        alc = (EditText) findViewById(R.id.proteinPercent);
-        vol = (EditText) findViewById(R.id.perGramOrML);
-        quantity = (EditText) findViewById(R.id.fullSize);
+        protein = (EditText) findViewById(R.id.proteinPercent);
+        perGramOrML = (EditText) findViewById(R.id.perGramOrML);
+        fullSize = (EditText) findViewById(R.id.fullSize);
         price = (EditText) findViewById(R.id.price);
         TVA = (TextView) findViewById(R.id.TVA);
-        alcPerBuck = (TextView) findViewById(R.id.alcPerBuck);
+        ProteinPerBuck = (TextView) findViewById(R.id.alcPerBuck);
         buttonSubmit = (Button) findViewById(R.id.buttonCalc);
-        buttonGoToProtein = (Button) findViewById(R.id.goToMainBtn);
+        buttonGoToMain = (Button) findViewById(R.id.goToMainBtn);
         /*
             Submit Button
         */
@@ -63,38 +62,38 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                volNum = Double.valueOf(vol.getText().toString());
-                alcNum = Double.valueOf(alc.getText().toString());
-                quantityNum = Double.valueOf(quantity.getText().toString());
+                perGrams = Double.valueOf(perGramOrML.getText().toString());
+                proteinNum = Double.valueOf(protein.getText().toString());
+                fullSizeNum = Double.valueOf(fullSize.getText().toString());
                 priceNum = Double.valueOf(price.getText().toString());
 
+                tvpResult = (fullSizeNum*proteinNum/perGrams);
+                //tvpResult = (perGrams /100 * proteinNum * fullSizeNum);
+                ProteinPerBuckResult = tvpResult /priceNum;
 
-                tvaResult = (volNum/100 * alcNum * quantityNum);
-                alcPerBuckResult = tvaResult/priceNum;
-
-                String tva = String.format("%.2f", tvaResult);
-                String apbr = String.format("%.2f", alcPerBuckResult);
+                String tva = String.format("%.2f", tvpResult);
+                String apbr = String.format("%.2f", ProteinPerBuckResult);
                 //alcPerBuckResult = Float.valueOf(Math.round(alcPerBuckResult));
 
                 TVA.setText(tva);
-                if (alcPerBuckResult < 1000) alcPerBuck.setTextColor(getResources().getColor(R.color.Green));
-                if (alcPerBuckResult < 11) alcPerBuck.setTextColor(getResources().getColor(R.color.Yellow));
-                if (alcPerBuckResult < 8) alcPerBuck.setTextColor(getResources().getColor(R.color.Red));
-                alcPerBuck.setText(apbr);
+                if (ProteinPerBuckResult < 100) ProteinPerBuck.setTextColor(getResources().getColor(R.color.Green));
+                if (ProteinPerBuckResult < 40) ProteinPerBuck.setTextColor(getResources().getColor(R.color.Yellow));
+                if (ProteinPerBuckResult < 8) ProteinPerBuck.setTextColor(getResources().getColor(R.color.Red));
+                ProteinPerBuck.setText(apbr);
 
 
 
             }
         });
 
-        buttonGoToProtein.setOnClickListener(new View.OnClickListener() {
+        buttonGoToMain.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Intent myIntent = new Intent(MainActivity.this, ProteinActivity.class);
+                Intent myIntent = new Intent(ProteinActivity.this, MainActivity.class);
                 //myIntent.putExtra("key", value); //Optional parameters
-                MainActivity.this.startActivity(myIntent);
+                ProteinActivity.this.startActivity(myIntent);
 
 
 

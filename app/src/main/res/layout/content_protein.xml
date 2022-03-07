@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context=".ProteinActivity"
+    tools:showIn="@layout/activity_protein">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3170667552847591/4982291761"
+        app:adUnitId="ca-app-pub-3170667552847591/8175336473"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Alcohol"
+        android:text="Protein"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginTop="44dp"
-        android:text="Alc %"
+        android:text="Protein (g)"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewtitle" />
 
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginTop="32dp"
-        android:text="Vol (ml)"
+        android:text="per __ g or ml"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewalc" />
 
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginTop="32dp"
-        android:text="Quantity"
+        android:text="Full size (g)"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewvol" />
 
@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="Total Vol Alcohol"
+        android:text="Total Vol Protein"
         app:layout_constraintStart_toEndOf="@+id/buttonCalc"
         app:layout_constraintTop_toTopOf="@+id/buttonCalc" />
 
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:text="Alc / $"
+        android:text="Protein / $"
         app:layout_constraintStart_toEndOf="@+id/buttonCalc"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -174,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="148dp"
-        android:text="Go To Protein"
+        android:text="Go To Alcohol"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
