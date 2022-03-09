@@ -33,25 +33,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewquantity" />
 
     <TextView
-        android:id="@+id/textViewtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Protein"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textViewalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="44dp"
         android:text="Protein (g)"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewtitle" />
+        tools:layout_editor_absoluteY="80dp" />
 
     <TextView
         android:id="@+id/textViewvol"
@@ -124,13 +112,12 @@
         android:id="@+id/proteinPercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
         android:layout_marginEnd="67dp"
         android:ems="10"
         android:inputType="number|numberDecimal"
         android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewtitle" />
+        tools:layout_editor_absoluteY="69dp" />
 
     <EditText
         android:id="@+id/perGramOrML"
